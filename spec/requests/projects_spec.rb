@@ -38,7 +38,7 @@ RSpec.describe 'Projects API', type: :request do
         end
 
         context 'when the record does not exist' do
-            let(:project_id) { 100 }
+            let(:project_id) { -100 }
 
             it 'returns status code 404' do
                 expect(response).to have_http_status(404)
