@@ -50,13 +50,14 @@ RSpec.describe 'Projects API', type: :request do
     end
     # Test suite for POST /projects
     describe 'POST /projects' do
-        let(:valid_attributes) { { title: 'Learn Ruby' } }
+        let(:valid_attributes) { { title: 'Learn Ruby', created_by:'Bob' } }
 
         context 'when the request is valid' do
             before { post '/projects' , params: valid_attributes }
 
-            it 'creates a poject' do
+            it 'creates a project' do
                 expect(json['title']).to eq('Learn Ruby')
+                expect(json['created_by']).to eq('Bob')
             end
 
             it 'returns status code 201' do

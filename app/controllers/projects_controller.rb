@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
 
     def project_params
         # params to allow through
-        params.permit(:title)
+        params.permit(:title, :created_by)
     end
 
     def set_project
