@@ -9,7 +9,7 @@ RSpec.describe 'Actions API' do
 
     # Test suite for GET /project/:project_id/actions
     describe 'GET /projects/:project_id/actions' do
-        before { get "/actions/#{project_id}/actions" }
+        before { get "/projects/#{project_id}/actions" }
 
         context 'when project exists' do
         it 'returns status code 200' do
@@ -36,7 +36,7 @@ RSpec.describe 'Actions API' do
 
   # Test suite for GET /projects/:project_id/actions/:id
   describe 'GET /projects/:project_id/actions/:id' do
-    before { get "/projects/#{project_id}/items/#{id}" }
+    before { get "/projects/#{project_id}/actions/#{id}" }
 
     context 'when project action exists' do
         it 'returns status code 200' do

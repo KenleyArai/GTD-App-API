@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Projects API', type: :request do
 
     # Initialize test data
-    let!(:actions) { create_list(:action, 20) }
+    let!(:project) { create(:project) }
+    let!(:project_id) { project.id }
+    let!(:actions) { create_list(:action, 20, project_id: project.id) }
     let(:action_id) { actions.first.id }
 
     # Test suite for GET /projects
@@ -12,7 +14,7 @@ RSpec.describe 'Projects API', type: :request do
 
         it 'returns projects' do
             expect(json).not_to be_empty
-            expect(json.size).to eq(20)
+            expect(json.size).to eq(1)
         end
 
         it 'returns status code 200' do
@@ -34,7 +36,7 @@ RSpec.describe 'Projects API', type: :request do
             end
         end
 
-        context 'when the record does not exits' do
+        context 'when the record does not exist' do
             let(:project_id) { 100 }
 
             it 'returns status code 404' do
