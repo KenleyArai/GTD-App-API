@@ -1,5 +1,5 @@
 FactoryGirl.define do
-    factory :todo do
+    factory :project do
       title { Faker::Lorem.word }
     end
   end
