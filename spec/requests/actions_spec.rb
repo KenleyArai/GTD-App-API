@@ -9,7 +9,7 @@ RSpec.describe 'Actions API' do
 
     # Test suite for GET /project/:project_id/actions
     describe 'GET /projects/:project_id/actions' do
-        before { get "/actions/#{project_id}/actions" }
+        before { get "/projects/#{project_id}/actions" }
 
         context 'when project exists' do
         it 'returns status code 200' do
@@ -36,7 +36,7 @@ RSpec.describe 'Actions API' do
 
   # Test suite for GET /projects/:project_id/actions/:id
   describe 'GET /projects/:project_id/actions/:id' do
-    before { get "/projects/#{project_id}/items/#{id}" }
+    before { get "/projects/#{project_id}/actions/#{id}" }
 
     context 'when project action exists' do
         it 'returns status code 200' do
@@ -63,7 +63,7 @@ RSpec.describe 'Actions API' do
 
   # Test suite for PUT /projects/:project_id/actions
   describe 'POST /projects/:project_id/actions' do
-    let(:valid_attributes) { { name: 'Go shopping', done: false } }
+    let(:valid_attributes) { { title: 'Go shopping', done: false } }
 
     context 'when request attributes are valid' do
       before { post "/projects/#{project_id}/actions", params: valid_attributes }
@@ -88,7 +88,7 @@ RSpec.describe 'Actions API' do
 
   # Test suite for PUT /projects/:project_id/actions/:id
   describe 'PUT /projects/:project_id/actions/:id' do
-    let(:valid_attributes) { { name: 'Apples' } }
+    let(:valid_attributes) { { title: 'Apples' } }
 
     before { put "/projects/#{project_id}/actions/#{id}", params: valid_attributes }
 
